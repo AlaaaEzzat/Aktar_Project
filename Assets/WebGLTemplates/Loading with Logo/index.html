@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
+    <title>Unity Web Player | {{{ PRODUCT_NAME }}}</title>
+    <style>
+      html, body {
+        background-size: auto;
+        background-color: #444444;
+      }
+      #unity-loading-bar {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      #unity-logo1 {
+        width: 40vw;
+        max-width: 280px;
+        height: auto;
+      }
+
+      #unity-progress-bar {
+        width: 764px;
+        max-width: 90vw;
+        height: 40px;
+        margin-top: 60px;
+        background: url('bar.png') no-repeat center center;
+        background-size: 100% 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        transform: scale(0.7);
+        transform-origin: top center;
+      }
+
+      #unity-progress-bar-fill {
+        position: absolute;
+        top: 7px;
+        left: 6px;
+        height: calc(100% - 14px);
+        width: 0%;
+        background-color: #55CAC2;
+        transition: width 0.3s ease;
+        border-radius: 20px 0 0 20px;
+      }
+
+      @media (max-width: 768px) {
+        #unity-logo1 {
+          width: 50vw;
+          max-width: 200px;
+        }
+
+        #unity-progress-bar {
+          width: 550px;
+          height: 30px;
+          margin-top: 0px;
+        }
+
+        #unity-progress-bar-fill {
+          border-radius: 5px 0 0 5px;
+        }
+      }
+    </style>
+  </head>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width={{{ WIDTH }}} height={{{ HEIGHT }}} tabindex="-1" style="width: {{{ WIDTH }}}px; height: {{{ HEIGHT }}}px; background: {{{ BACKGROUND_FILENAME ? 'url(\'Build/' + BACKGROUND_FILENAME.replace(/'/g, '%27') + '\') center / cover' : BACKGROUND_COLOR }}}"></canvas>
+
+    <!-- ✅ Added Loading Logo and Progress Bar -->
+    <div id="unity-loading-bar">
+      <img id="unity-logo1" src="logo1.png" alt="Loading Logo">
+      <div id="unity-progress-bar">
+        <div id="unity-progress-bar-fill"></div>
+      </div>
+    </div>
+
+    <script src="Build/{{{ LOADER_FILENAME }}}"></script>
+    <script>
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        arguments: [],
+        dataUrl: "Build/{{{ DATA_FILENAME }}}",
+        frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_THREADS
+        workerUrl: "Build/{{{ WORKER_FILENAME }}}",
+#endif
+#if USE_WASM
+        codeUrl: "Build/{{{ CODE_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: "Build/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+        productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+        productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}}
+      }, (progress) => {
+        // ✅ Update progress bar fill
+        document.getElementById("unity-progress-bar-fill").style.width = (progress * 100) + "%";
+      }).then(() => {
+        // ✅ Hide loading bar when done
+        document.getElementById("unity-loading-bar").style.display = "none";
+      }).catch((message) => {
+        alert("Unity load failed: " + message);
+      });
+    </script>
+  </body>
+</html>
