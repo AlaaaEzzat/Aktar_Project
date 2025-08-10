@@ -29,8 +29,8 @@ public class PauseManager : MonoBehaviour
 		else
 			Destroy(gameObject);
 
-		if (pausePanel != null)
-			pausePanel.SetActive(true); // يمكنك جعلها false عند البدء حسب تصميم لعبتك
+		//if (pausePanel != null)
+		//	pausePanel.SetActive(true); // يمكنك جعلها false عند البدء حسب تصميم لعبتك
 
 		if (gameplayCam && pauseCam)
 		{

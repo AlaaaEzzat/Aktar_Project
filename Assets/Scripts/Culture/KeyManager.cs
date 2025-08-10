@@ -46,7 +46,6 @@ public class KeyManager : MonoBehaviour
 		collectedCount++;
 		if (collectedCount >= requiredKeyCountToAnimate)
 		{
-			GameManager.Instance.OnAllKeysCollected();
 
 			// ابدأ فتح البوابة مع الصوت (يمكنك نقلها لمنطق GameManager حسب الحاجة)
 			if (gateTransform != null)

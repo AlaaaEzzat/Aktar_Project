@@ -130,7 +130,6 @@ public class CollisionWithPlayer : MonoBehaviour
 	private IEnumerator WaitAndWin(float delay)
 	{
 		yield return new WaitForSeconds(delay);
-		GameManager.Instance.WinGame();
 	}
 
 	/// <summary>
