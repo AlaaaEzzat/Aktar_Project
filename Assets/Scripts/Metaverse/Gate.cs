@@ -4,9 +4,11 @@ public class Gate : MonoBehaviour
 {
     [SerializeField] private string requiredItemId = "K1";
     [SerializeField] private GameObject doorLockIcon;
+    public bool disableJest = false;
 
     private Inventory playerInventory;
     private Animator animator;
+
 
     private void Start()
     {
@@ -21,6 +23,11 @@ public class Gate : MonoBehaviour
             if (playerInventory.HasItem(requiredItemId))
             {
                 OpenDoor();
+                if (disableJest)
+                {
+                    collision.GetComponent<PlayerController>().CurrentState = PlayerState.Idle;
+                    collision.GetComponent<Animator>().SetBool("FlyingMode" , false);
+                }
             }
             else
             {

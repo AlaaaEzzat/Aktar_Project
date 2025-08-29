@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum PlayerState
+{
+    Idle,
+    Flying,
+    Attacking
+}
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
@@ -7,10 +13,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jumping")]
     public float jumpForce = 14f;
-    public float coyoteTime = 0.1f;      // grace after leaving ground
-    public float jumpBufferTime = 0.1f;  // grace before landing
-    public float lowJumpMultiplier = 4f; // better jump feel
-    public float fallMultiplier = 6f;    // stronger fall
+    public float coyoteTime = 0.1f;
+    public float jumpBufferTime = 0.1f;
+    public float lowJumpMultiplier = 4f;
+    public float fallMultiplier = 6f; 
 
     [Header("Ground Check")]
     public Transform groundCheck;
@@ -18,13 +24,25 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
 
     private Rigidbody2D _rb;
+    private Inventory _inventory;
+    private Animator _anim;
     private bool _isGrounded;
     private float _coyoteTimer;
     private float _jumpBufferTimer;
+    private PlayerState _currentState = PlayerState.Idle;
+
+    public PlayerState CurrentState
+    {
+        get { return _currentState; }
+        set { _currentState = value; }
+    }
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _inventory = GetComponent<Inventory>();
+        _anim = GetComponent<Animator>();
+        _inventory.OnItemCollected += EnableAttackMode;
     }
 
     private void Update()
@@ -34,6 +52,8 @@ public class PlayerController : MonoBehaviour
         v.x = x * moveSpeed;
         _rb.linearVelocity = v;
 
+        Attack();
+
         if (x != 0)
         {
             Vector3 s = transform.localScale;
@@ -41,28 +61,30 @@ public class PlayerController : MonoBehaviour
             transform.localScale = s;
         }
 
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
-        if (_isGrounded)
-            _coyoteTimer = coyoteTime;
-        else
-            _coyoteTimer -= Time.deltaTime;
-
-        if (Input.GetButtonDown("Jump"))
-            _jumpBufferTimer = jumpBufferTime;
-        else
-            _jumpBufferTimer -= Time.deltaTime;
-
-        if (_jumpBufferTimer > 0 && _coyoteTimer > 0)
+        if (_currentState != PlayerState.Flying)
         {
-            _jumpBufferTimer = 0;
-            _coyoteTimer = 0;
-            Jump();
-        }
+            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+            if (_isGrounded)
+                _coyoteTimer = coyoteTime;
+            else
+                _coyoteTimer -= Time.deltaTime;
 
-        if (_rb.linearVelocity.y < 0)
-            _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        else if (_rb.linearVelocity.y > 0)
-            _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            if (Input.GetButtonDown("Jump"))
+                _jumpBufferTimer = jumpBufferTime;
+            else
+                _jumpBufferTimer -= Time.deltaTime;
+
+            if (_jumpBufferTimer > 0 && _coyoteTimer > 0)
+            {
+                _jumpBufferTimer = 0;
+                _coyoteTimer = 0;
+                Jump();
+            }
+            if (_rb.linearVelocity.y < 0)
+                _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            else if (_rb.linearVelocity.y > 0)
+                _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
     }
 
     private void Jump()
@@ -72,12 +94,32 @@ public class PlayerController : MonoBehaviour
         _rb.linearVelocity = v;
     }
 
+    private void Attack()
+    {
+        if(_currentState != PlayerState.Attacking)
+            return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            _anim.SetTrigger("Attack");
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (groundCheck)
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+    }
+
+    private void EnableAttackMode(ItemSO item)
+    {
+        if(item.itemId == "Fist")
+        {
+            _currentState = PlayerState.Attacking;
+            _anim.SetBool("AttackingMode", true); 
         }
     }
 }
