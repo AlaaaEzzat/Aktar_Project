@@ -27,6 +27,7 @@ public class SelectableItem : MonoBehaviour , IPointerClickHandler
 
     private int CurrentFadeIndex = 0;
     private bool isClicked = false;
+    private string currentAnimationToPlay = "Correct";
 
 
 
@@ -74,7 +75,7 @@ public class SelectableItem : MonoBehaviour , IPointerClickHandler
         if (animator != null)
         {
             animator.enabled = true;
-            animator.SetTrigger("Correct");
+            animator.SetTrigger(currentAnimationToPlay);
         }
         else
         {
@@ -110,6 +111,24 @@ public class SelectableItem : MonoBehaviour , IPointerClickHandler
             }
 
         }
+    }
+
+    public void PlayFadeEffectAnimation(int startposition = 0)
+    {
+        if (startposition < fadeAnimations.Count && fadeAnimations[startposition] != null)
+        {
+            foreach (var anim in fadeAnimations[startposition].Images)
+            {
+                anim.DOFade(0f, fadeAnimations[startposition].FadeInDuration);
+                currentAnimationToPlay = "Correct";
+            }
+
+        }
+    }
+
+    public void SetCurrentAnimation(string S)
+    {
+        currentAnimationToPlay = S;
     }
 
     public void SkipEffect()

@@ -13,6 +13,7 @@ public class Level2GameManager : GameManager
         {
             correctChoices++;
             item.PlayCorrectAnimation();
+            ApplyImageEffect(item);
             currentCorrectItem = null;
 
             savingPoints += item.pointsType == Points.Saving ? 10 : 0;

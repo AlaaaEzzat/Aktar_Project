@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
 	public int spendingPoints = 0;
     public int savingPoints = 0;
     public int keepingPoints = 0;
+	public Image spendingPointsEffectImage;
+    public Image savingPointsEffectImage;
+    public Image keepingPointsEffectImage;
 
 
     [Header("ScorePoints TexrRefrance")]
@@ -236,7 +239,8 @@ public class GameManager : MonoBehaviour
             }
             correctChoices++;
             item.PlayCorrectAnimation();
-			if(item.GetComponent<CanvasGroup>() != null)
+			ApplyImageEffect(item);
+            if (item.GetComponent<CanvasGroup>() != null)
 				item.GetComponent<CanvasGroup>().ignoreParentGroups = true;
 			currentCorrectItem = null;
             currentSelectedItem = item;
@@ -286,7 +290,8 @@ public class GameManager : MonoBehaviour
 	public void ShowItemsPanal()
 	{
         itemsPanal.GetComponent<CanvasGroup>().DOFade(1, 1f).SetEase(Ease.OutQuad);
-		foreach(var item in allItems)
+        itemsPanal.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        foreach (var item in allItems)
 		{
 			item.GetComponent<Image>().raycastTarget = true;
         }
@@ -295,6 +300,7 @@ public class GameManager : MonoBehaviour
     public void HideItemsPanal()
     {
 		itemsPanal.GetComponent<CanvasGroup>().DOFade(0, 1f).SetEase(Ease.OutQuad);
+        itemsPanal.GetComponent<CanvasGroup>().blocksRaycasts = false;
         foreach (var item in allItems)
         {
             item.GetComponent<Image>().raycastTarget = false;
@@ -305,5 +311,18 @@ public class GameManager : MonoBehaviour
 	public void SetCurrentCorrectItem(SelectableItem item)
 	{
         currentCorrectItem = item;
+    }
+
+	public void ApplyImageEffect(SelectableItem itm)
+	{
+		if(itm.pointsType == Points.Spending && spendingPointsEffectImage != null)
+            spendingPointsEffectImage.DOFade(1f, 1f).SetEase(Ease.InOutQuad)
+                .OnComplete(() => spendingPointsEffectImage.DOFade(0f, 1f).SetEase(Ease.InOutQuad));
+        else if(itm.pointsType == Points.Saving && savingPointsEffectImage != null)
+            savingPointsEffectImage.DOFade(1f, 1f).SetEase(Ease.InOutQuad)
+                .OnComplete(() => savingPointsEffectImage.DOFade(0f, 1f).SetEase(Ease.InOutQuad));
+        else if(itm.pointsType == Points.Keeping && keepingPointsEffectImage != null)
+            keepingPointsEffectImage.DOFade(1f, 1f).SetEase(Ease.InOutQuad)
+				.OnComplete(() => keepingPointsEffectImage.DOFade(0f, 1f).SetEase(Ease.InOutQuad));
     }
 }

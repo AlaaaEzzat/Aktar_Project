@@ -233,8 +233,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &153538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,8 +391,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &20340014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,8 +797,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &91167290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,8 +955,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &111311183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,6 +1210,9 @@ MonoBehaviour:
   spendingPoints: 0
   savingPoints: 0
   keepingPoints: 0
+  spendingPointsEffectImage: {fileID: 0}
+  savingPointsEffectImage: {fileID: 0}
+  keepingPointsEffectImage: {fileID: 0}
   spendingPointsText: {fileID: 0}
   savingPointsText: {fileID: 0}
   keepingPointsText: {fileID: 0}
@@ -1594,7 +1613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 625.2, y: -38.27}
+  m_AnchoredPosition: {x: 625.2, y: -96.2}
   m_SizeDelta: {x: 550, y: 550}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &273189038
@@ -1754,8 +1773,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &369273151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,8 +1931,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &376349332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2137,8 +2164,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &406597280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2366,8 +2397,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &418847502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,8 +2925,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &477219915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3203,8 +3242,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &508972817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3827,8 +3870,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &575470329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4061,8 +4108,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &631458903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4215,8 +4266,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &644571864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4369,8 +4424,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &659707445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4523,8 +4582,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &676896165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5361,8 +5424,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &812898023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5515,8 +5582,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &832911533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5744,8 +5815,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &860922034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5850,8 +5925,12 @@ MonoBehaviour:
     controlPosition: 1
     MoveDuration: 3
     resetAfter: 1
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &868367075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6004,8 +6083,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &894352316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6158,8 +6241,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &902928211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6432,8 +6519,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &925984388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6543,8 +6634,12 @@ MonoBehaviour:
     controlPosition: 1
     MoveDuration: 3
     resetAfter: 1
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &971208222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6776,8 +6871,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1011368086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6930,8 +7029,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1018901459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7084,8 +7187,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1023725742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7190,8 +7297,12 @@ MonoBehaviour:
     controlPosition: 1
     MoveDuration: 3
     resetAfter: 1
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1076087818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7856,8 +7967,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1208859025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8121,8 +8236,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1270992924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8545,8 +8664,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1307803647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8699,8 +8822,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1312596494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8853,8 +8980,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1318885299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9091,8 +9222,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1488138307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9496,8 +9631,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1541176108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9862,11 +10001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1778332751549661901, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 61.01
+      value: 61.01001
       objectReference: {fileID: 0}
     - target: {fileID: 1778332751549661901, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 9.640015
       objectReference: {fileID: 0}
     - target: {fileID: 1798661010147853246, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_Sprite
@@ -9944,6 +10083,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3342899625183843582, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -53.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342899625183843582, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 75.31
+      objectReference: {fileID: 0}
     - target: {fileID: 3692668083123065752, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9970,11 +10117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3767611403979540286, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -62.1
+      value: -62.100006
       objectReference: {fileID: 0}
     - target: {fileID: 3767611403979540286, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 9.640015
       objectReference: {fileID: 0}
     - target: {fileID: 3770423678734288208, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_IsActive
@@ -10296,6 +10443,14 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6665605297547150909, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 65.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6665605297547150909, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 75.31
+      objectReference: {fileID: 0}
     - target: {fileID: 6723653924128701616, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -10538,7 +10693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8964348108995839112, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150.62
+      value: -70.4
       objectReference: {fileID: 0}
     - target: {fileID: 8979484470453111662, guid: d506b302257a9814caf5ed501c5e747a, type: 3}
       propertyPath: m_IsActive
@@ -10678,8 +10833,12 @@ MonoBehaviour:
     controlPosition: 1
     MoveDuration: 3
     resetAfter: 1
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1575567137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10907,8 +11066,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1611434548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11172,8 +11335,12 @@ MonoBehaviour:
     controlPosition: 1
     MoveDuration: 3
     resetAfter: 1
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1634040230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11326,8 +11493,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1636026553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11899,8 +12070,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1673469049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12468,8 +12643,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1772635282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12791,9 +12970,6 @@ GameObject:
   - component: {fileID: 1857072315}
   - component: {fileID: 1857072320}
   - component: {fileID: 1857072319}
-  - component: {fileID: 1857072318}
-  - component: {fileID: 1857072317}
-  - component: {fileID: 1857072316}
   m_Layer: 5
   m_Name: bucket
   m_TagString: Untagged
@@ -12820,113 +12996,6 @@ RectTransform:
   m_AnchoredPosition: {x: -11, y: -24}
   m_SizeDelta: {x: 300, y: 145.6}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1857072316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857072314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1857072319}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!95 &1857072317
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857072314}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 07e77f57a3911fb4184995fa1518a3e9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1857072318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857072314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbc216b257f23714db3b215b9dad7d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isCorrect: 1
-  animator: {fileID: 1857072317}
-  fadeAnimations:
-  - Images:
-    - {fileID: 0}
-    FadeInDuration: 1
-  - Images:
-    - {fileID: 0}
-    FadeInDuration: 1
-  - Images:
-    - {fileID: 0}
-    FadeInDuration: 1
-  - Images:
-    - {fileID: 0}
-    FadeInDuration: 1
-  pointsType: 1
-  MarkItems: {fileID: 0}
-  tweenEffect:
-    controlImage: 0
-    images: []
-    FadeInDuration: 0.5
-    targetTransform: {fileID: 0}
-    controlScale: 0
-    ScaleDuration: 0.5
-    controlPosition: 0
-    MoveDuration: 0.5
-    resetAfter: 0
-  pointPosition: {fileID: 0}
-  Duration: 1
 --- !u!114 &1857072319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13142,8 +13211,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1913480134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13371,8 +13444,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1928307070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13622,8 +13699,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1940840157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14042,8 +14123,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2102865869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14232,8 +14317,12 @@ MonoBehaviour:
     controlPosition: 0
     MoveDuration: 0.5
     resetAfter: 0
+  canBeSkipped: 1
   pointPosition: {fileID: 0}
   Duration: 1
+  OnSuccessEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2140397807
 MonoBehaviour:
   m_ObjectHideFlags: 0
