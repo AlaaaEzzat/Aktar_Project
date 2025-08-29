@@ -30,11 +30,18 @@ public class PlayerController : MonoBehaviour
     private float _coyoteTimer;
     private float _jumpBufferTimer;
     private PlayerState _currentState = PlayerState.Idle;
+    private bool isAttacing;
 
     public PlayerState CurrentState
     {
         get { return _currentState; }
         set { _currentState = value; }
+    }
+
+    public bool IsAttacking
+    {
+        get { return isAttacing; }
+        set { isAttacing = value; }
     }
 
     private void Awake()
@@ -102,6 +109,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             _anim.SetTrigger("Attack");
+            isAttacing = true;
+            Invoke("EndAttack", 0.2f);
         }
     }
 
@@ -121,5 +130,10 @@ public class PlayerController : MonoBehaviour
             _currentState = PlayerState.Attacking;
             _anim.SetBool("AttackingMode", true); 
         }
+    }
+
+    private void EndAttack()
+    {
+        isAttacing = false;
     }
 }
