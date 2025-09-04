@@ -7,7 +7,6 @@ public class FlyingEnemy : MonoBehaviour
     [SerializeField] private Transform endPoint;
     [SerializeField] private Vector3 moveDirection;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private ParticleSystem explodeEffect;
 
     void Start()
     {
@@ -30,10 +29,8 @@ public class FlyingEnemy : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            explodeEffect.Play();
             GetComponent<SpriteRenderer>().enabled = false;
             HealthSystem h  = collision.GetComponent<HealthSystem>();
-            h.respawnPoint = SpawanPoint;
             h.TakeDamage();
             Invoke("ResetEnemy", 2);
         }

@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     public float groundCheckRadius = 0.15f;
     public LayerMask groundMask;
 
+    [Header("Attacking")]
+    public GameObject projectileObject;
+    public Transform shootingPoint;
+
     private Rigidbody2D _rb;
     private Inventory _inventory;
     private Animator _anim;
@@ -44,12 +48,18 @@ public class PlayerController : MonoBehaviour
         set { isAttacing = value; }
     }
 
+    public Animator Animator
+    {
+        get { return _anim; }
+    }
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _inventory = GetComponent<Inventory>();
         _anim = GetComponent<Animator>();
         _inventory.OnItemCollected += EnableAttackMode;
+        isAttacing = false;
     }
 
     private void Update()
@@ -106,9 +116,16 @@ public class PlayerController : MonoBehaviour
         if(_currentState != PlayerState.Attacking)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isAttacing)
         {
             _anim.SetTrigger("Attack");
+            GameObject obj = Instantiate(projectileObject, shootingPoint.position, Quaternion.identity);
+
+            if (obj.TryGetComponent<MovingProjectile>(out var projectile))
+            {
+                int direction = transform.localScale.x > 0 ? 1 : -1;
+                projectile.SetDirection(direction);
+            }
             isAttacing = true;
             Invoke("EndAttack", 0.2f);
         }

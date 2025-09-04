@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private GameObject MagnitEffect;
     [SerializeField] private GameObject ClothItem;
     private readonly HashSet<string> _items = new();
+    private PlayerController playerController;
 
     // Event when an item is collected
     public event Action<ItemSO> OnItemCollected;
@@ -15,6 +16,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
         OnItemCollected += OnItemColletecdEffect;
     }
 
@@ -41,6 +43,11 @@ public class Inventory : MonoBehaviour
         {
             ClothItem.GetComponent<SpriteRenderer>().sprite = item.icon;
             ClothItem.gameObject.SetActive(true);
+        }
+        else if (item.itemId == "Fist")
+        {
+            playerController.CurrentState = PlayerState.Attacking;
+            playerController.Animator.SetBool("AttackingMode", true);
         }
     }
 }

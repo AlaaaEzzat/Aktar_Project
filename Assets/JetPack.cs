@@ -7,39 +7,46 @@ public class JetPack : MonoBehaviour
     private PlayerController playerController;
     private Rigidbody2D rb;
 
+    [Header("Jetpack Settings")]
     public float thrust = 8f;
     public float gravityScale = 2.5f;
+    public float jetpackGravityScale = 0.5f;
 
-
+    private bool hasJetpack = false;
 
     private void Start()
     {
-        playerInventory = gameObject.GetComponent<Inventory>();
-        anim = gameObject.GetComponent<Animator>();
-        playerController = gameObject.GetComponent<PlayerController>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        playerInventory = GetComponent<Inventory>();
+        anim = GetComponent<Animator>();
+        playerController = GetComponent<PlayerController>();
+        rb = GetComponent<Rigidbody2D>();
 
-        playerInventory.OnItemCollected += HandleItemCollected;
-
+        if (playerInventory != null)
+            playerInventory.OnItemCollected += HandleItemCollected;
     }
 
     private void OnDisable()
     {
-        playerInventory.OnItemCollected -= HandleItemCollected;
+        if (playerInventory != null)
+            playerInventory.OnItemCollected -= HandleItemCollected;
     }
 
     private void Update()
     {
-        if(playerController.CurrentState != PlayerState.Flying)
+        if (!hasJetpack || playerController.CurrentState != PlayerState.Flying)
             return;
 
+        HandleJetpackMovement();
+    }
+
+    private void HandleJetpackMovement()
+    {
         if (Input.GetButton("Jump"))
         {
-            rb.AddForce(Vector2.up * thrust);
-
+            rb.AddForce(Vector2.up * thrust, ForceMode2D.Force);
         }
 
-        rb.linearVelocity += Vector2.up * Physics2D.gravity.y * gravityScale * Time.deltaTime;
+        rb.gravityScale = jetpackGravityScale;
     }
 
     private void HandleItemCollected(ItemSO item)
@@ -53,13 +60,17 @@ public class JetPack : MonoBehaviour
 
     private void EnableJetpack()
     {
+        hasJetpack = true;
         playerController.CurrentState = PlayerState.Flying;
+        rb.gravityScale = jetpackGravityScale;
         anim.SetBool("FlyingMode", true);
     }
 
-    public void DissableJetpack()
+    public void DisableJetpack()
     {
+        hasJetpack = false;
         playerController.CurrentState = PlayerState.Idle;
+        rb.gravityScale = gravityScale;
         anim.SetBool("FlyingMode", false);
     }
 }

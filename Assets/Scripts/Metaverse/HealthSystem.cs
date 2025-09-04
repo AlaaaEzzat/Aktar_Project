@@ -13,6 +13,7 @@ public class HealthSystem : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public GameObject losePanal;
+    public ParticleSystem getHitEffect;
 
     [Header("Respawn Settings")]
     public Transform respawnPoint;
@@ -34,6 +35,7 @@ public class HealthSystem : MonoBehaviour
         canTakeDmg = false;
 
         currentLives--;
+        getHitEffect.Play();
 
         UpdateHeartsUI();
         animator.SetTrigger("GetHit");

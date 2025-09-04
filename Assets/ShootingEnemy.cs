@@ -9,6 +9,7 @@ public class ShootingEnemy : MonoBehaviour
     [SerializeField] private Transform instantiatePosition;
     [SerializeField] private float coolDownTime = 1f;
     [SerializeField] private int maxActiveProjectiles = 3;
+    [SerializeField] private ParticleSystem damgaeEffect;
 
     private List<GameObject> projectiles = new List<GameObject>();
     private float shootTimer;
@@ -62,9 +63,10 @@ public class ShootingEnemy : MonoBehaviour
     public void TakeDamage()
     {
         health--;
+        damgaeEffect.Play();
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject , 1);
         }
     }
 }

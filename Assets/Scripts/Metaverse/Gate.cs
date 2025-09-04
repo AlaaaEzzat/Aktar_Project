@@ -28,6 +28,7 @@ public class Gate : MonoBehaviour
                     collision.GetComponent<PlayerController>().CurrentState = PlayerState.Idle;
                     collision.GetComponent<Animator>().SetBool("FlyingMode" , false);
                 }
+                gameObject.GetComponent<Collider2D>().enabled = false;
             }
             else
             {
