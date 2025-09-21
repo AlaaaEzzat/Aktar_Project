@@ -23,7 +23,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            var wallet = other.GetComponent<CurrencyWallet>();
+            CurrencyWallet wallet = CurrencyWallet.Instance;
             var inventory = other.GetComponent<Inventory>();
 
             switch (type)

@@ -12,7 +12,6 @@ public class HealthSystem : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    public GameObject losePanal;
     public ParticleSystem getHitEffect;
 
     [Header("Respawn Settings")]
@@ -67,8 +66,8 @@ public class HealthSystem : MonoBehaviour
     private void GameOver()
     {
         isDead = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //losePanal.SetActive(true);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        UiManager.Instance.LoseEndGame();
     }
 
 }
