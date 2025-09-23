@@ -31,8 +31,8 @@ public class UiManager : MonoBehaviour
 
     private void Start()
     {
-        coinText.text = "0";
-        gemText.text = "0";
+        coinText.text = CurrencyWallet.Instance.Coins.ToString();
+        gemText.text = CurrencyWallet.Instance.Gems.ToString();
     }
 
     public void UpdateCoins(int amount)

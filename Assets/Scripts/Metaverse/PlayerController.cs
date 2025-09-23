@@ -144,9 +144,16 @@ public class PlayerController : MonoBehaviour
     {
         if(item.itemId == "Fist")
         {
+            GetComponent<JetPack>().DisableJetpack();
             _currentState = PlayerState.Attacking;
             _anim.SetBool("AttackingMode", true); 
         }
+    }
+
+    public void DissableAttackMode()
+    {
+        _currentState = PlayerState.Idle;
+        _anim.SetBool("AttackingMode", false);
     }
 
     private void EndAttack()
