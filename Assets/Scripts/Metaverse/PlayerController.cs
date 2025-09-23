@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public float coyoteTime = 0.1f;
     public float jumpBufferTime = 0.1f;
     public float lowJumpMultiplier = 4f;
-    public float fallMultiplier = 6f; 
+    public float fallMultiplier = 6f;
 
     [Header("Ground Check")]
     public Transform groundCheck;
@@ -36,6 +36,13 @@ public class PlayerController : MonoBehaviour
     private PlayerState _currentState = PlayerState.Idle;
     private bool isAttacing;
 
+    private Vector2 _moveInput;
+    private bool _jumpPressed;
+    private bool _attackPressed;
+    public bool IsJumpHeld { get; private set; }
+
+    private PlayerControlls _controls;
+
     public PlayerState CurrentState
     {
         get { return _currentState; }
@@ -48,10 +55,7 @@ public class PlayerController : MonoBehaviour
         set { isAttacing = value; }
     }
 
-    public Animator Animator
-    {
-        get { return _anim; }
-    }
+    public Animator Animator => _anim;
 
     private void Awake()
     {
@@ -59,49 +63,87 @@ public class PlayerController : MonoBehaviour
         _inventory = GetComponent<Inventory>();
         _anim = GetComponent<Animator>();
         _inventory.OnItemCollected += EnableAttackMode;
+
+        _controls = new PlayerControlls();
+
+        // Movement input
+        _controls.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
+        _controls.Player.Move.canceled += ctx => _moveInput = Vector2.zero;
+
+        // Jump input
+        _controls.Player.Jump.performed += ctx => _jumpPressed = true;
+        _controls.Player.Jump.canceled += ctx => IsJumpHeld = false;
+        _controls.Player.Jump.performed += ctx => IsJumpHeld = true;
+
+        // Attack input
+        _controls.Player.Attack.performed += ctx => _attackPressed = true;
+
         isAttacing = false;
+    }
+
+    private void OnEnable()
+    {
+        _controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _controls.Disable();
     }
 
     private void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
+        HandleMovement();
+        HandleJump();
+        HandleAttack();
+    }
+
+    private void HandleMovement()
+    {
         Vector2 v = _rb.linearVelocity;
-        v.x = x * moveSpeed;
+        v.x = _moveInput.x * moveSpeed;
         _rb.linearVelocity = v;
 
-        Attack();
-
-        if (x != 0)
+        if (_moveInput.x != 0)
         {
             Vector3 s = transform.localScale;
-            s.x = Mathf.Sign(x) * Mathf.Abs(s.x);
+            s.x = Mathf.Sign(_moveInput.x) * Mathf.Abs(s.x);
             transform.localScale = s;
         }
+    }
 
-        if (_currentState != PlayerState.Flying)
+    private void HandleJump()
+    {
+        if (_currentState == PlayerState.Flying) return;
+
+        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+
+        if (_isGrounded)
+            _coyoteTimer = coyoteTime;
+        else
+            _coyoteTimer -= Time.deltaTime;
+
+        if (_jumpPressed)
         {
-            _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
-            if (_isGrounded)
-                _coyoteTimer = coyoteTime;
-            else
-                _coyoteTimer -= Time.deltaTime;
-
-            if (Input.GetButtonDown("Jump"))
-                _jumpBufferTimer = jumpBufferTime;
-            else
-                _jumpBufferTimer -= Time.deltaTime;
-
-            if (_jumpBufferTimer > 0 && _coyoteTimer > 0)
-            {
-                _jumpBufferTimer = 0;
-                _coyoteTimer = 0;
-                Jump();
-            }
-            if (_rb.linearVelocity.y < 0)
-                _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            else if (_rb.linearVelocity.y > 0)
-                _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            _jumpBufferTimer = jumpBufferTime;
+            _jumpPressed = false;
         }
+        else
+        {
+            _jumpBufferTimer -= Time.deltaTime;
+        }
+
+        if (_jumpBufferTimer > 0 && _coyoteTimer > 0)
+        {
+            _jumpBufferTimer = 0;
+            _coyoteTimer = 0;
+            Jump();
+        }
+
+        if (_rb.linearVelocity.y < 0)
+            _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        else if (_rb.linearVelocity.y > 0)
+            _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
     }
 
     private void Jump()
@@ -111,24 +153,28 @@ public class PlayerController : MonoBehaviour
         _rb.linearVelocity = v;
     }
 
-    private void Attack()
+    private void HandleAttack()
     {
-        if(_currentState != PlayerState.Attacking)
+        if (_currentState != PlayerState.Attacking || !_attackPressed || isAttacing)
             return;
 
-        if (Input.GetMouseButtonDown(0) && !isAttacing)
-        {
-            _anim.SetTrigger("Attack");
-            GameObject obj = Instantiate(projectileObject, shootingPoint.position, Quaternion.identity);
+        _anim.SetTrigger("Attack");
+        GameObject obj = Instantiate(projectileObject, shootingPoint.position, Quaternion.identity);
 
-            if (obj.TryGetComponent<MovingProjectile>(out var projectile))
-            {
-                int direction = transform.localScale.x > 0 ? 1 : -1;
-                projectile.SetDirection(direction);
-            }
-            isAttacing = true;
-            Invoke("EndAttack", 0.2f);
+        if (obj.TryGetComponent<MovingProjectile>(out var projectile))
+        {
+            int direction = transform.localScale.x > 0 ? 1 : -1;
+            projectile.SetDirection(direction);
         }
+
+        isAttacing = true;
+        _attackPressed = false;
+        Invoke("EndAttack", 0.2f);
+    }
+
+    private void EndAttack()
+    {
+        isAttacing = false;
     }
 
     private void OnDrawGizmosSelected()
@@ -142,11 +188,11 @@ public class PlayerController : MonoBehaviour
 
     private void EnableAttackMode(ItemSO item)
     {
-        if(item.itemId == "Fist")
+        if (item.itemId == "Fist")
         {
             GetComponent<JetPack>().DisableJetpack();
             _currentState = PlayerState.Attacking;
-            _anim.SetBool("AttackingMode", true); 
+            _anim.SetBool("AttackingMode", true);
         }
     }
 
@@ -154,10 +200,5 @@ public class PlayerController : MonoBehaviour
     {
         _currentState = PlayerState.Idle;
         _anim.SetBool("AttackingMode", false);
-    }
-
-    private void EndAttack()
-    {
-        isAttacing = false;
     }
 }

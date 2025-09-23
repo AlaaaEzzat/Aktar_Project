@@ -41,7 +41,7 @@ public class JetPack : MonoBehaviour
 
     private void HandleJetpackMovement()
     {
-        if (Input.GetButton("Jump"))
+        if (playerController.IsJumpHeld)
         {
             rb.AddForce(Vector2.up * thrust, ForceMode2D.Force);
         }
