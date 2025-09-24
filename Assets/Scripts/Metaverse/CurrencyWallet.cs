@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CurrencyWallet : MonoBehaviour
@@ -6,6 +7,7 @@ public class CurrencyWallet : MonoBehaviour
     public static CurrencyWallet Instance { get; private set; }
     public int Coins { get; private set; }
     public int Gems { get; private set; }
+    public List<ItemSO> OwnedItems = new List<ItemSO>();
 
     public event Action<int> OnCoinsChanged;
     public event Action<int> OnGemsChanged;
