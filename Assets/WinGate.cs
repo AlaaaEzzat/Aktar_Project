@@ -8,7 +8,7 @@ public class WinGate : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             UiManager.Instance.WinEndGame();
-            //LevelManager.Instance.IncreaseLevelOpen(SceneManager.GetActiveScene().buildIndex);
+            LevelManager.Instance.IncreaseLevelOpen(SceneManager.GetActiveScene().buildIndex);
             //LoadNextScene();
         }
     }

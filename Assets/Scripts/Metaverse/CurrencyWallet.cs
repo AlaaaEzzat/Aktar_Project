@@ -8,6 +8,8 @@ public class CurrencyWallet : MonoBehaviour
     public int Coins { get; private set; }
     public int Gems { get; private set; }
     public List<ItemSO> OwnedItems = new List<ItemSO>();
+    public ItemSO headItem;
+    public ItemSO ringItem;
 
     public event Action<int> OnCoinsChanged;
     public event Action<int> OnGemsChanged;

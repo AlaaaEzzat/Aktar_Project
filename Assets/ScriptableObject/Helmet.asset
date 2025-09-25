@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Helmet
   m_EditorClassIdentifier: 
   itemId: Cloth
-  displayName: Helmet1
+  displayName: Cap1
+  currencyType: 0
+  price: 0
+  owned: 0
   description: 
   icon: {fileID: 21300000, guid: d055b833c20d4c74d92b1841411e1451, type: 3}
+  Gameplayicon: {fileID: 0}
+  GameplayItemIconColor: {r: 0, g: 0, b: 0, a: 0}

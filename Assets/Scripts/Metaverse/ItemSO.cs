@@ -15,4 +15,6 @@ public class ItemSO : ScriptableObject
     public bool owned = false;
     [TextArea] public string description;
     public Sprite icon;
+    public Sprite Gameplayicon;
+    public Color GameplayItemIconColor;
 }

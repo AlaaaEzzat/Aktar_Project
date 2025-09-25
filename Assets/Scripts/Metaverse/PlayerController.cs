@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
     public GameObject projectileObject;
     public Transform shootingPoint;
 
+    [Header("Clothes")]
+    public SpriteRenderer Ring1;
+    public SpriteRenderer Ring2;
+    public SpriteRenderer Head;
+
     private Rigidbody2D _rb;
     private Inventory _inventory;
     private Animator _anim;
@@ -72,13 +77,36 @@ public class PlayerController : MonoBehaviour
 
         // Jump input
         _controls.Player.Jump.performed += ctx => _jumpPressed = true;
+        _controls.Player.Jump.canceled += ctx => _jumpPressed = false;
+
         _controls.Player.Jump.canceled += ctx => IsJumpHeld = false;
         _controls.Player.Jump.performed += ctx => IsJumpHeld = true;
 
         // Attack input
         _controls.Player.Attack.performed += ctx => _attackPressed = true;
+        _controls.Player.Attack.canceled += ctx => _attackPressed = false;
 
         isAttacing = false;
+    }
+
+    private void Start()
+    {
+        if(CurrencyWallet.Instance.headItem != null)
+        {
+            Head.gameObject.SetActive(true);
+            Head.sprite = CurrencyWallet.Instance.headItem.icon;
+        }
+
+        if (CurrencyWallet.Instance.ringItem != null)
+        {
+            Ring1.transform.parent.gameObject.SetActive(true);
+            Ring1.sprite = CurrencyWallet.Instance.ringItem.Gameplayicon;
+            Ring1.color = CurrencyWallet.Instance.ringItem.GameplayItemIconColor;
+
+            Ring2.sprite = CurrencyWallet.Instance.ringItem.Gameplayicon;
+            Ring2.color = CurrencyWallet.Instance.ringItem.GameplayItemIconColor;
+
+        }
     }
 
     private void OnEnable()
@@ -96,6 +124,26 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleJump();
         HandleAttack();
+        if(CurrentState != PlayerState.Idle)
+        {
+            if(Head.gameObject.activeInHierarchy)
+                Head.gameObject.SetActive(false);
+
+            if (Ring1.transform.parent.gameObject.activeInHierarchy)
+            {
+                Ring1.transform.parent.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if (!Head.gameObject.activeInHierarchy)
+                Head.gameObject.SetActive(true);
+
+            if (!Ring1.transform.parent.gameObject.activeInHierarchy)
+            {
+                Ring1.transform.parent.gameObject.SetActive(true);
+            }
+        }
     }
 
     private void HandleMovement()

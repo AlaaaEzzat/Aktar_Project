@@ -35,14 +35,13 @@ public class Inventory : MonoBehaviour
 
     public void OnItemColletecdEffect(ItemSO item)
     {
-        if(item.itemId == "Magnat")
+        if (item.itemId == "Magnat")
         {
             MagnitEffect.gameObject.SetActive(true);
         }
-        else if (item.itemId == "Cloth")
+        else if (item.itemId.Contains("Cap") || item.itemId.Contains("Ring"))
         {
-            ClothItem.GetComponent<SpriteRenderer>().sprite = item.icon;
-            ClothItem.gameObject.SetActive(true);
+            CurrencyWallet.Instance.OwnedItems.Add(item);
         }
         else if (item.itemId == "Fist")
         {

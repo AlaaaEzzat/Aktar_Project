@@ -15,7 +15,9 @@ MonoBehaviour:
   itemId: Ring4
   displayName: 
   currencyType: 1
-  price: 15
+  price: 5
   owned: 0
   description: 
   icon: {fileID: 21300000, guid: 0f86506c6aae6ac44a18f53e5d742206, type: 3}
+  Gameplayicon: {fileID: 21300000, guid: 86ceed4a1dd58da4fbcacb5bbcffa1d3, type: 3}
+  GameplayItemIconColor: {r: 0.78823537, g: 0.0627451, b: 0.78823537, a: 1}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,17 +13,22 @@ public class Container_UI : MonoBehaviour
     public Button NexItem;
     public Button PreviousItem;
     public Button BuyButton;
+    public Button UseButton;
+    public Button UsedButton;
     public Sprite coinsImage;
     public Sprite gemsImage;
     private int startIndex;
     private bool canBuy = false;
-
+    private CurrencyWallet wallet;
     private void Start()
     {
+        wallet = CurrencyWallet.Instance;
         startIndex = 0;
         NexItem.onClick.AddListener(GetNextItem);
         PreviousItem.onClick.AddListener(GetPrivousItem);
         BuyButton.onClick.AddListener(BuyItem);
+        UseButton.onClick.AddListener(UseItem);
+        UsedButton.onClick.AddListener(UnUseItem);
         ChangeShowedItem();
     }
 
@@ -50,42 +56,91 @@ public class Container_UI : MonoBehaviour
     {
         if (canBuy)
         {
-            CurrencyWallet w = CurrencyWallet.Instance;
             ItemSO currentItem = items[startIndex];
             if (currentItem.currencyType == CurrencyType.Coins)
             {
-                w.AddCoins(-currentItem.price);
+                wallet.AddCoins(-currentItem.price);
                 LockedIcon.gameObject.SetActive(false);
                 BuyButton.gameObject.SetActive(false);
             }
             else
             {
-                w.AddCoins(- currentItem.price);
+                wallet.AddCoins(- currentItem.price);
                 LockedIcon.gameObject.SetActive(false);
                 BuyButton.gameObject.SetActive(false);
             }
+            wallet.OwnedItems.Add(currentItem);
+            UseButton.gameObject.SetActive(true);
         }
     }
 
     public void ChangeShowedItem()
     {
+        bool owned = wallet.OwnedItems.FirstOrDefault(item => item.itemId == items[startIndex].itemId);
         itemToShow.sprite = items[startIndex].icon;
-        CurrencyWallet w = CurrencyWallet.Instance;
         ItemSO currentItem = items[startIndex];
+
+        if (owned)
+        {
+            if (currentItem.name.Contains("Cap"))
+            {
+                UseButton.gameObject.SetActive(wallet.headItem == null);
+                UsedButton.gameObject.SetActive(wallet.headItem != null && wallet.headItem.itemId == currentItem.itemId);
+            }
+            else
+            {
+                UseButton.gameObject.SetActive(wallet.ringItem == null);
+                UsedButton.gameObject.SetActive(wallet.ringItem != null &&  wallet.ringItem.itemId == currentItem.itemId);
+            }
+
+        }
+        else
+        {
+            UseButton.gameObject.SetActive(false);
+            UsedButton.gameObject.SetActive(false);
+        }
         priceText.text = currentItem.price.ToString();
         if (currentItem.currencyType == CurrencyType.Coins)
         {
             currencyImage.sprite = coinsImage;
-            LockedIcon.gameObject.SetActive(w.Coins < currentItem.price);
-            canBuy = w.Coins > currentItem.price ? true : false;
+            LockedIcon.gameObject.SetActive(wallet.Coins < currentItem.price && !owned);
+            canBuy = wallet.Coins > currentItem.price ? true : false;
         }
         else
         {
             currencyImage.sprite = gemsImage;
-            LockedIcon.gameObject.SetActive(w.Gems < currentItem.price);
-            canBuy = w.Gems > currentItem.price ? true : false;
+            LockedIcon.gameObject.SetActive(wallet.Gems < currentItem.price && !owned);
+            canBuy = wallet.Gems > currentItem.price ? true : false;
         }
 
-        BuyButton.gameObject.SetActive(/*canBuy &&*/ ! w.OwnedItems.Contains(items[startIndex]));
+        BuyButton.gameObject.SetActive(!owned);
+    }
+
+    public void UseItem()
+    {
+        UsedButton.gameObject.SetActive(true);
+        if (items[startIndex].name.Contains("Cap"))
+        {
+            wallet.headItem = items[startIndex];
+        }
+        else
+        {
+            wallet.ringItem = items[startIndex];
+        }
+        UseButton.gameObject.SetActive(false);
+
+    }
+    public void UnUseItem()
+    {
+        UseButton.gameObject.SetActive(true);
+        if (items[startIndex].name.Contains("Cap"))
+        {
+            wallet.headItem = null;
+        }
+        else
+        {
+            wallet.ringItem = null;
+        }
+        UsedButton.gameObject.SetActive(false);
     }
 }
