@@ -54,13 +54,13 @@ public class Container_UI : MonoBehaviour
             ItemSO currentItem = items[startIndex];
             if (currentItem.currencyType == CurrencyType.Coins)
             {
-                w.AddCoins(w.Coins - currentItem.price);
+                w.AddCoins(-currentItem.price);
                 LockedIcon.gameObject.SetActive(false);
                 BuyButton.gameObject.SetActive(false);
             }
             else
             {
-                w.AddCoins(w.Gems - currentItem.price);
+                w.AddCoins(- currentItem.price);
                 LockedIcon.gameObject.SetActive(false);
                 BuyButton.gameObject.SetActive(false);
             }
