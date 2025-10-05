@@ -31,7 +31,7 @@ public class JetPack : MonoBehaviour
             playerInventory.OnItemCollected -= HandleItemCollected;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!hasJetpack || playerController.CurrentState != PlayerState.Flying)
             return;

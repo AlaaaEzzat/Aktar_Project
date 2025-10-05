@@ -104,13 +104,13 @@ public class Container_UI : MonoBehaviour
         {
             currencyImage.sprite = coinsImage;
             LockedIcon.gameObject.SetActive(wallet.Coins < currentItem.price && !owned);
-            canBuy = wallet.Coins > currentItem.price ? true : false;
+            canBuy = wallet.Coins >= currentItem.price ? true : false;
         }
         else
         {
             currencyImage.sprite = gemsImage;
             LockedIcon.gameObject.SetActive(wallet.Gems < currentItem.price && !owned);
-            canBuy = wallet.Gems > currentItem.price ? true : false;
+            canBuy = wallet.Gems >= currentItem.price ? true : false;
         }
 
         BuyButton.gameObject.SetActive(!owned);
