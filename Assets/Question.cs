@@ -26,15 +26,14 @@ public class Question : MonoBehaviour
         }
         Chooice s = chooices.Find(c => c != answer);
         answer.answerImage.gameObject.SetActive(true);
-        s.answerImage.gameObject.SetActive(true);
         if (answer.isCorrect)
         {
             answer.answerImage.sprite = correctImage;
-            s.answerImage.sprite = wrongImage;
             QuestionManager.Instance.CorrectAnswer();
         }
         else
         {
+            s.answerImage.gameObject.SetActive(true);
             answer.answerImage.sprite = wrongImage;
             s.answerImage.sprite = correctImage;
             QuestionManager.Instance.WrongAnswer();

@@ -30,11 +30,12 @@ public class QuestionManager : MonoBehaviour
     {
         questions[currentQuestionIndex].GetComponent<CanvasGroup>().DOFade(1, 2f);
         questions[currentQuestionIndex].GetComponent<CanvasGroup>().interactable = true;
-        score.text = "0 / 5";
+        score.text = "1 / 5";
     }
 
     public void NextQuestion()
     {
+        score.text = (currentQuestionIndex + 2) + "/" + questions.Count;
         CanvasGroup previousQuestion = questions[currentQuestionIndex].GetComponent<CanvasGroup>();
         currentQuestionIndex++;
         if(currentQuestionIndex > questions.Count-1)
@@ -74,7 +75,6 @@ public class QuestionManager : MonoBehaviour
     public void CorrectAnswer()
     {
         currentScore++;
-        score.text = currentScore + "/" + questions.Count;
         StartCoroutine(WaitBeforNextQuestion());
     }
 
