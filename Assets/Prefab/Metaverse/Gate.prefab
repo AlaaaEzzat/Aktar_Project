@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItemId: K1
   doorLockIcon: {fileID: 3625154603028417702}
+  disableJest: 0
 --- !u!95 &3257409870063961926
 Animator:
   serializedVersion: 7

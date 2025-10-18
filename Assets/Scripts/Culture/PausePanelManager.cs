@@ -124,7 +124,7 @@ public class PauseManager : MonoBehaviour
 		}
 
 		// 5- أغلق البانل وأرجع اللعبة
-		ImmediateResume();
+		//ImmediateResume();
 	}
 
 	// إغلاق فوري عند الضغط خارج البانل أو إذا احتاج النظام ذلك

@@ -241,7 +241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ceb1dde070b477a48865c1fbc090bccc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ce531721f8c10c48878b1508f28d00b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1031,7 +1031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3247123365688241110, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3247123365688241110, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1039,7 +1039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3247123365688241110, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3247123365688241110, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_AnchorMin.y
@@ -1095,11 +1095,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3247123365688241110, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -315
       objectReference: {fileID: 0}
     - target: {fileID: 3247123365688241110, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 77
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 3247123365688241110, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1120,7 +1120,7 @@ PrefabInstance:
     - target: {fileID: 7144007120415044169, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fd8fc5fbc28e61b40b13b2f2354d1b67, type: 3}
+      objectReference: {fileID: 21300000, guid: 9f9e5fa730799c643b490a8a3d704bbd, type: 3}
     - target: {fileID: 7169335848679778028, guid: cd23d77097b90ce4b9f4b4e41032406a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
