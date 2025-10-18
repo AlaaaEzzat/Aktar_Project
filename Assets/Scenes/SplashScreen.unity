@@ -241,7 +241,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ceb1dde070b477a48865c1fbc090bccc, type: 3}
+  m_Sprite: {fileID: -1656835576140334233, guid: 569313d093599ae47bfc1de57332a4ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -997,6 +997,9 @@ MonoBehaviour:
   - key: Gate
     clip: {fileID: 8300000, guid: d86a3f55d07768243a8db936828e0d43, type: 3}
     volume: 1
+  - key: Water
+    clip: {fileID: 8300000, guid: 5fc46eea1741b214db81ad829eee29b7, type: 3}
+    volume: 0.7
   isMuted: 0
 --- !u!4 &1971638725
 Transform:

@@ -112,7 +112,8 @@ public class Level3GameManager : GameManager
 
     public void IncreaseCount()
     {
-        if (CurrentCount + CurrentPurchesedItems < 10)
+        int iteamCount = itemsPurchesed.ContainsKey(itemToBuy) ? itemsPurchesed[itemToBuy] : 0;
+        if (CurrentCount + iteamCount < 10)
         {
             CurrentCount++;
         }
@@ -160,27 +161,36 @@ public class Level3GameManager : GameManager
                 CurrentCount = 0;
             }
 
-            if (CurrentPurchesedItems >= 10)
+            if (CurrentPurchesedItems >= 50)
             {
-                FinalHolder.SetActive(true);
-                FinalCount.SetActive(true);
-                int counter = 0;
-                foreach (var count in itemsPurchesed)
-                {
-                    GameObject obj = Instantiate(count.Key, FinalHolder.transform);
-                    foreach (var itm in itemsPrice)
-                    {
-                        if (itm.Key == count.Key)
-                        {
-                            obj.GetComponentInChildren<TextMeshProUGUI>().text = count.Value.ToString();
-                            counter += (itm.Value * count.Value);
-                        }
-                    }
-                }
-                AssignAnswers(counter);
+                FinishBuying();
             }
         }
         UpdateCountUiText();
+    }
+
+    public void FinishBuying()
+    {
+        if (CurrentPurchesedItems > 0)
+        {
+            FinalHolder.SetActive(true);
+            FinalCount.SetActive(true);
+            int counter = 0;
+            foreach (var count in itemsPurchesed)
+            {
+                GameObject obj = Instantiate(count.Key, FinalHolder.transform);
+                foreach (var itm in itemsPrice)
+                {
+                    if (itm.Key == count.Key)
+                    {
+                        obj.GetComponentInChildren<TextMeshProUGUI>().text = count.Value.ToString();
+                        counter += (itm.Value * count.Value);
+                    }
+                }
+            }
+            AssignAnswers(counter);
+        }
+
     }
 
     public void UpdateCountUiText()
