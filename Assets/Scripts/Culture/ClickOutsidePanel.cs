@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class ClickOutsidePanel : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ClickOutsidePanel : MonoBehaviour
 
 	[Header("لوحة التوقف المؤقت (أربط نفس اللوحة هنا وداخل PauseManager)")]
 	public GameObject panel;
+	public bool showInStart = false;
 
 	private GraphicRaycaster raycaster;
 	private PointerEventData pointerData;
@@ -31,17 +33,15 @@ public class ClickOutsidePanel : MonoBehaviour
 		eventSystem = EventSystem.current;
 
 		// إظهار اللوحة تلقائيًا عند بداية المشهد
-		StartCoroutine(ShowPanelTemporarily());
+		if(showInStart)
+			StartCoroutine(ShowPanelTemporarily());
 	}
 
 	IEnumerator ShowPanelTemporarily()
 	{
 		isTemporaryPanel = true;
-		panel.SetActive(true);
-
-		// أوقف اللعبة
-		if (PauseManager.Instance != null)
-			PauseManager.Instance.PauseGame();
+		panel.GetComponent<CanvasGroup>().interactable = true;
+        panel.GetComponent<CanvasGroup>().DOFade(1, 1f); // تلاشي الدخول
 
 		yield return new WaitForSecondsRealtime(showDuration);
 
@@ -74,7 +74,7 @@ public class ClickOutsidePanel : MonoBehaviour
 	// نداء من زر أو سكربت خارجي لفتح اللوحة (وتوقف اللعبة)
 	public void ShowPanel()
 	{
-		panel.SetActive(true);
+		//panel.SetActive(true);
 		if (PauseManager.Instance != null)
 			PauseManager.Instance.PauseGame();
 		isTemporaryPanel = false;
@@ -83,7 +83,7 @@ public class ClickOutsidePanel : MonoBehaviour
 	// إغلاق اللوحة (واستئناف اللعبة)
 	public void HidePanel()
 	{
-		panel.SetActive(false);
+		//panel.SetActive(false);
 		if (PauseManager.Instance != null)
 			PauseManager.Instance.ImmediateResume();
 		isTemporaryPanel = false;

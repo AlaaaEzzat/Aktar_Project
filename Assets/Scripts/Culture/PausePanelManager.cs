@@ -87,7 +87,7 @@ public class PauseManager : MonoBehaviour
 		// Start auto-close logic
 		if (autoCloseCoroutine != null) StopCoroutine(autoCloseCoroutine);
 		panelWasClosedByClick = false;
-		autoCloseCoroutine = StartCoroutine(PausePanelSequence());
+		//autoCloseCoroutine = StartCoroutine(PausePanelSequence());
 	}
 
 	// تسلسل ظهور البانل، ثم تشغيل الصوت، ثم الإغلاق بعد نهاية الصوت + ثانية واحدة
