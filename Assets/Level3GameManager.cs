@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -184,6 +185,7 @@ public class Level3GameManager : GameManager
                     if (itm.Key == count.Key)
                     {
                         obj.GetComponentInChildren<TextMeshProUGUI>().text = count.Value.ToString();
+                        obj.GetComponentInChildren<SelectableItem>().gameObject.SetActive(false);
                         counter += (itm.Value * count.Value);
                     }
                 }
