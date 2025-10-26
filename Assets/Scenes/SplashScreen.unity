@@ -995,7 +995,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 699901ca3a9df484f82b34d1d23797a0, type: 3}
     volume: 1
   - key: Gate
-    clip: {fileID: 8300000, guid: d86a3f55d07768243a8db936828e0d43, type: 3}
+    clip: {fileID: 8300000, guid: b6f0ae587c2b3ba4fbc87ac8bc7753a3, type: 3}
+    volume: 1
+  - key: Jump
+    clip: {fileID: 8300000, guid: 798b7b2279dda2a4a9cbfeb73dc433f0, type: 3}
+    volume: 1
+  - key: Checkpoint
+    clip: {fileID: 8300000, guid: 53e009b29cb726b4b8b78ef1815ad96a, type: 3}
     volume: 1
   isMuted: 0
 --- !u!4 &1971638725

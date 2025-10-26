@@ -14,6 +14,7 @@ public class SetRespawnPoint : MonoBehaviour
                 TargetTransformReplace.respawnPoint = newRespawnPoint;
             }
             collision.GetComponent<HealthSystem>().respawnPoint = newRespawnPoint;
+            SoundManager.Instance.PlaySound("Checkpoint");
         }
     }
 

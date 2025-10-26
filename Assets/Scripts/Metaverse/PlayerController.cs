@@ -199,6 +199,7 @@ public class PlayerController : MonoBehaviour
         Vector2 v = _rb.linearVelocity;
         v.y = jumpForce;
         _rb.linearVelocity = v;
+        SoundManager.Instance.PlaySound("Jump");
     }
 
     private void HandleAttack()

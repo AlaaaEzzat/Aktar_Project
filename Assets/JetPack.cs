@@ -41,12 +41,20 @@ public class JetPack : MonoBehaviour
 
     private void HandleJetpackMovement()
     {
+        if (transform.position.y <= -3f)
+        {
+            rb.linearVelocityY = 0;
+            rb.gravityScale = 0;
+        }
+        else
+        {
+            rb.gravityScale = jetpackGravityScale;
+        }
+
         if (playerController.IsJumpHeld)
         {
             rb.AddForce(Vector2.up * thrust, ForceMode2D.Force);
         }
-
-        rb.gravityScale = jetpackGravityScale;
     }
 
     private void HandleItemCollected(ItemSO item)

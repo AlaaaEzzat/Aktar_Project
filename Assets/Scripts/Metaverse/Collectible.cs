@@ -30,6 +30,7 @@ public class Collectible : MonoBehaviour
             {
                 case CollectibleType.Coin:
                     wallet?.AddCoins(amount);
+                    SoundManager.Instance.PlaySound("Coins");
                     break;
                 case CollectibleType.Gem:
                     wallet?.AddGems(amount);

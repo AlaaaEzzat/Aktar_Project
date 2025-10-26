@@ -41,5 +41,6 @@ public class Gate : MonoBehaviour
     {
         animator.enabled = true;
         doorLockIcon.SetActive(false);
+        SoundManager.Instance.PlaySound("Gate");
     }
 }

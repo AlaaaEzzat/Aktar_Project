@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class WinGate : MonoBehaviour
 {
@@ -7,8 +8,12 @@ public class WinGate : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            UiManager.Instance.WinEndGame();
-            LevelManager.Instance.IncreaseLevelOpen(SceneManager.GetActiveScene().buildIndex);
+            collision.gameObject.transform.DORotate(new Vector3(0, 0, 360f), 1f, RotateMode.FastBeyond360);
+            collision.gameObject.transform.DOScale(Vector3.zero, 1f).OnComplete(() =>
+            {
+                UiManager.Instance.WinEndGame();
+                LevelManager.Instance.IncreaseLevelOpen(SceneManager.GetActiveScene().buildIndex);
+            });
             //LoadNextScene();
         }
     }
