@@ -22,6 +22,7 @@ public class SoundManager : MonoBehaviour
 
 	private Dictionary<string, AudioSource> audioSources = new Dictionary<string, AudioSource>();
 	public bool isMuted = false;
+	int levelKey = 1;
 
 	public static event Action OnSoundPlayed;
 
@@ -65,6 +66,7 @@ public class SoundManager : MonoBehaviour
 		{
 			AddAudioClip(sound.key, sound.clip, sound.volume);
 		}
+		ChangeKey();
 	}
 
 	/// <summary>
@@ -115,6 +117,17 @@ public class SoundManager : MonoBehaviour
 		audioSources[key].Play();
 		OnSoundPlayed?.Invoke();
 	}
+
+	public void ChangeKey()
+	{
+		levelKey = UnityEngine.Random.Range(1, 4);
+    }
+
+	public void PlayLevelKey(string condition)
+	{
+		string key = levelKey + condition;
+		PlaySound(key);
+    }
 
 	public void StopSound(string key)
 	{

@@ -8890,7 +8890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1306663831755143341, guid: b97e187b172665643b50ee8e4ebb1e78, type: 3}
       propertyPath: parts.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1306663831755143341, guid: b97e187b172665643b50ee8e4ebb1e78, type: 3}
       propertyPath: questionSoundKey

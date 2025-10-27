@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] protected Image background;
 
 	[SerializeField] protected Sprite part2Background;
+	public int starsToShow;
 
     protected int lives = 3;
     protected int correctChoices = 0;
@@ -119,7 +120,7 @@ public class GameManager : MonoBehaviour
     public virtual IEnumerator LoseSequence()
 	{
 		DisableObjects();
-		SoundManager.Instance?.PlaySound(loseSoundKey);
+		SoundManager.Instance?.PlayLevelKey("Lose");
 		if (losePanel) losePanel.SetActive(true);
 		yield break;
 	}
@@ -143,7 +144,6 @@ public class GameManager : MonoBehaviour
             gameFinished = false;
             yield break;
         }
-        yield return new WaitForSeconds(2);
 
         LevelManager.Instance?.IncreaseLevelOpen(currentLevelIndex);
 		DisableObjects();
@@ -151,16 +151,8 @@ public class GameManager : MonoBehaviour
 		HideStars();
 
 		yield return new WaitForSeconds(0f);
-		SoundManager.Instance?.PlaySound(winSoundKey);
+		SoundManager.Instance?.PlayLevelKey("Win");
 		if (winPanel) winPanel.SetActive(true);
-
-        int finalCorrectAnswers = correctChoices - wrongChoices;
-
-        int starsToShow = finalCorrectAnswers >= totalRightItems[CurrentLevelPart]
-            ? 3
-            : finalCorrectAnswers >= totalRightItems[CurrentLevelPart] / 2
-                ? 2
-                : 1;
 
         for (int i = 0; i < starsToShow; i++)
 		{
@@ -170,7 +162,7 @@ public class GameManager : MonoBehaviour
 				yield return StartCoroutine(PlayStarPop(winStars[i]));
 			}
 		}
-
+		SoundManager.Instance.ChangeKey();
 	}
 
 

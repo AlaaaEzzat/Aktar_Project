@@ -30,6 +30,7 @@ public class Question : MonoBehaviour
         {
             answer.answerImage.sprite = correctImage;
             QuestionManager.Instance.CorrectAnswer();
+            SoundManager.Instance.PlaySound("Correct");
         }
         else
         {
@@ -37,6 +38,7 @@ public class Question : MonoBehaviour
             answer.answerImage.sprite = wrongImage;
             s.answerImage.sprite = correctImage;
             QuestionManager.Instance.WrongAnswer();
+            SoundManager.Instance.PlaySound("Wrong");
         }
     }
 }

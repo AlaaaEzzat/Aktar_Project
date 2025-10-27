@@ -45,16 +45,13 @@ public class QuestionManager : MonoBehaviour
                 WinPanal.SetActive(true);
                 var currentLevelIndex = PlayerPrefs.GetInt("HighestUnlockedLevel", 0);
                 LevelManager.Instance?.IncreaseLevelOpen(currentLevelIndex + 1);
-
-                for (int i = 0; i < heartsWinPanal.Length; i++)
-                {
-                    heartsWinPanal[i].gameObject.SetActive(i < hearts);
-                }
+                GameManager.Instance.starsToShow = hearts;
+                StartCoroutine(GameManager.Instance.WinSequence());
                 return;
             }
             else if (hearts <= 0)
             {
-                LosePanal.SetActive(true);
+                StartCoroutine(GameManager.Instance.LoseSequence());
                 return;
             }
         }
@@ -84,7 +81,7 @@ public class QuestionManager : MonoBehaviour
         hearts--;
         if(hearts == 0)
         {
-            LosePanal.SetActive(true);
+            StartCoroutine(GameManager.Instance.LoseSequence());
             return;
         }
         StartCoroutine(WaitBeforNextQuestion());
