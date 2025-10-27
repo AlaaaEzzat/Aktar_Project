@@ -59,7 +59,7 @@ public class Level2GameManager : GameManager
         HideStars();
 
         yield return new WaitForSeconds(0f);
-        SoundManager.Instance?.PlaySound(winSoundKey);
+        SoundManager.Instance?.PlayLevelSound("Win");
         if (winPanel) winPanel.SetActive(true);
         int finalCorrectAnswers = correctChoices - wrongChoices;
 
@@ -77,13 +77,13 @@ public class Level2GameManager : GameManager
                 yield return StartCoroutine(PlayStarPop(winStars[i]));
             }
         }
-
+        SoundManager.Instance.ChangeLevelKey();
     }
 
     public override IEnumerator LoseSequence()
     {
         DisableObjects();
-        SoundManager.Instance?.PlaySound(loseSoundKey);
+        SoundManager.Instance?.PlayLevelSound("Lose");
         if (losePanel) losePanel.SetActive(true);
         yield break;
     }

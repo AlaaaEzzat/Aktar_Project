@@ -119,8 +119,8 @@ public class GameManager : MonoBehaviour
     public virtual IEnumerator LoseSequence()
 	{
 		DisableObjects();
-		SoundManager.Instance?.PlaySound(loseSoundKey);
-		if (losePanel) losePanel.SetActive(true);
+		SoundManager.Instance?.PlayLevelSound("Lose");
+        if (losePanel) losePanel.SetActive(true);
 		yield break;
 	}
 
@@ -151,8 +151,8 @@ public class GameManager : MonoBehaviour
 		HideStars();
 
 		yield return new WaitForSeconds(0f);
-		SoundManager.Instance?.PlaySound(winSoundKey);
-		if (winPanel) winPanel.SetActive(true);
+		SoundManager.Instance?.PlayLevelSound("Win");
+        if (winPanel) winPanel.SetActive(true);
 
         int finalCorrectAnswers = correctChoices - wrongChoices;
 
@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
 				yield return StartCoroutine(PlayStarPop(winStars[i]));
 			}
 		}
-
+		SoundManager.Instance.ChangeLevelKey();
 	}
 
 

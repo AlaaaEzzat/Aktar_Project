@@ -22,8 +22,11 @@ public class SoundManager : MonoBehaviour
 
 	private Dictionary<string, AudioSource> audioSources = new Dictionary<string, AudioSource>();
 	public bool isMuted = false;
+	int randomKey;
+	int levelKey;
 
-	public static event Action OnSoundPlayed;
+
+    public static event Action OnSoundPlayed;
 
 	void OnEnable()
 	{
@@ -65,12 +68,14 @@ public class SoundManager : MonoBehaviour
 		{
 			AddAudioClip(sound.key, sound.clip, sound.volume);
 		}
-	}
+		levelKey = UnityEngine.Random.Range(1, 3);
 
-	/// <summary>
-	/// Ensures audio plays correctly on Android.
-	/// </summary>
-	private void InitializeAndroidAudio()
+    }
+
+    /// <summary>
+    /// Ensures audio plays correctly on Android.
+    /// </summary>
+    private void InitializeAndroidAudio()
 	{
 #if UNITY_ANDROID
         AudioListener.pause = false;
@@ -150,7 +155,18 @@ public class SoundManager : MonoBehaviour
 		PlaySound(randomKey);
 	}
 
-	public void StopAllSounds()
+	public void ChangeLevelKey()
+	{
+        levelKey = UnityEngine.Random.Range(1, 3);
+    }
+
+    public void PlayLevelSound(string condition)
+    {
+        string key = levelKey + condition;
+        PlaySound(key);
+    }
+
+    public void StopAllSounds()
 	{
 		foreach (var source in audioSources.Values)
 		{

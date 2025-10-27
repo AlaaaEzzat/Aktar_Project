@@ -26,6 +26,7 @@ public class Level3GameManager : GameManager
         if (gameFinished) return;
         if (item.isCorrect)
         {
+            SoundManager.Instance.PlaySound("Correct");
             correctChoices++;
             item.GetComponent<Image>().DOFade(1f, 0.2f).OnComplete(() =>
             {
@@ -72,7 +73,7 @@ public class Level3GameManager : GameManager
         HideStars();
 
         yield return new WaitForSeconds(0f);
-        SoundManager.Instance?.PlaySound(winSoundKey);
+        SoundManager.Instance?.PlayLevelSound("Win");
         if (winPanel) winPanel.SetActive(true);
         int finalCorrectAnswers = correctChoices - wrongChoices;
 
@@ -90,13 +91,13 @@ public class Level3GameManager : GameManager
                 yield return StartCoroutine(PlayStarPop(winStars[i]));
             }
         }
-
+        SoundManager.Instance.ChangeLevelKey();
     }
 
     public override IEnumerator LoseSequence()
     {
         DisableObjects();
-        SoundManager.Instance?.PlaySound(loseSoundKey);
+        SoundManager.Instance?.PlayLevelSound("Lose");
         if (losePanel) losePanel.SetActive(true);
         yield break;
     }
@@ -238,11 +239,13 @@ public class Level3GameManager : GameManager
     private void CorrectAnswer()
     {
         correctChoices = allItems.Count;
+        SoundManager.Instance.PlaySound("Correct");
         StartCoroutine(WinSequence());
     }
 
     private void WrongAnswer()
     {
+        SoundManager.Instance.PlaySound("Wrong");
         StartCoroutine(LoseSequence());
     }
 

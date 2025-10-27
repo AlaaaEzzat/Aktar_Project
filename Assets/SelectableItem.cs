@@ -38,7 +38,9 @@ public class SelectableItem : MonoBehaviour , IPointerClickHandler
 
     public void PlayCorrectAnimation()
     {
-        if(tweenEffect != null)
+        // SoundManager.Instance.PlayRandomStatusSound("Correct");
+        SoundManager.Instance.PlaySound("Correct");
+        if (tweenEffect != null)
         {
             Vector3 originaPosition = transform.position;
             if (tweenEffect.controlImage == true && tweenEffect.targetTransform != null)
@@ -48,7 +50,7 @@ public class SelectableItem : MonoBehaviour , IPointerClickHandler
                     image.DOFade(0f, tweenEffect.FadeInDuration);
                 }
             }
-            if(tweenEffect.controlScale == true && tweenEffect.targetTransform != null)
+            if (tweenEffect.controlScale == true && tweenEffect.targetTransform != null)
             {
                 transform.DOScale(tweenEffect.targetTransform.localScale, tweenEffect.ScaleDuration);
             }
@@ -150,6 +152,7 @@ public class SelectableItem : MonoBehaviour , IPointerClickHandler
     public void PlayWrongShake()
     {
         transform.DOShakePosition(0.5f, 10f, 20, 90);
+        SoundManager.Instance.PlaySound("Wrong");
     }
 }
 
