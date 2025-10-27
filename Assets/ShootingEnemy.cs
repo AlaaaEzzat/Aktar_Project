@@ -66,6 +66,11 @@ public class ShootingEnemy : MonoBehaviour
         damgaeEffect.Play();
         if (health <= 0)
         {
+            foreach (var proj in projectiles)
+            {
+                if (proj != null)
+                    Destroy(proj);
+            }
             Destroy(gameObject , 1);
         }
     }

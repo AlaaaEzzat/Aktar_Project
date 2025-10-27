@@ -940,12 +940,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSourcePrefab: {fileID: 8328542681908722404, guid: d26b7aa9b398bab4abb03455daeda972, type: 3}
   soundList:
-  - key: win
-    clip: {fileID: 8300000, guid: a7e08ad5e001b3f4b86ded3e1a5ee113, type: 3}
+  - key: Correct
+    clip: {fileID: 8300000, guid: 5220b9b39027c2f46b6e3b98b253bdfd, type: 3}
     volume: 0.342
-  - key: lose
-    clip: {fileID: 8300000, guid: 3c671b2b9a3649f49b87772f79c770f2, type: 3}
-    volume: 1
+  - key: Wrong
+    clip: {fileID: 8300000, guid: 2cf296fc954ae4d4b9f836079e143bc5, type: 3}
+    volume: 0.342
   - key: background
     clip: {fileID: 8300000, guid: fbb12ddcaa40fdf4bbf96c2a824833c1, type: 3}
     volume: 0.5
@@ -958,52 +958,44 @@ MonoBehaviour:
   - key: Coins
     clip: {fileID: 8300000, guid: c49d73495b739044db7d7df51e20fe6f, type: 3}
     volume: 1
-  - key: QEgypt
-    clip: {fileID: 8300000, guid: 4dd3fbae5130469438e77943e206c469, type: 3}
-    volume: 1
-  - key: Egypt
-    clip: {fileID: 8300000, guid: 7cef3efee792332478ac89919be11fb3, type: 3}
-    volume: 1
-  - key: QAlgeria
-    clip: {fileID: 8300000, guid: fd0a84b209a7daf4bbbdfe8cba37fc45, type: 3}
-    volume: 1
-  - key: Algeria
-    clip: {fileID: 8300000, guid: b666b09a93ed87a4ab7d07e4e6fcea27, type: 3}
-    volume: 1
-  - key: QEmirates
-    clip: {fileID: 8300000, guid: 65cbafb726e6cf1489b6c2c014cc2013, type: 3}
-    volume: 1
-  - key: Emirates
-    clip: {fileID: 8300000, guid: 05d91e75ef1eb444a835c7ccb3ab070c, type: 3}
-    volume: 1
-  - key: QKSA
-    clip: {fileID: 8300000, guid: 3a4a5f9fa3202314d92a43d20b2a8335, type: 3}
-    volume: 1
-  - key: KSA
-    clip: {fileID: 8300000, guid: c2d58f93903eff840b6bc5f7015e1c06, type: 3}
-    volume: 1
-  - key: QMoroco
-    clip: {fileID: 8300000, guid: 8d0f9e09d980adf4a98cf1d6c7003810, type: 3}
-    volume: 1
-  - key: Moroco
-    clip: {fileID: 8300000, guid: 48418297318097f4abaefdf0c63fe803, type: 3}
-    volume: 1
-  - key: QPalestine
-    clip: {fileID: 8300000, guid: 41fab354a1f4b7d44a930745af357357, type: 3}
-    volume: 1
-  - key: Palestine
-    clip: {fileID: 8300000, guid: 699901ca3a9df484f82b34d1d23797a0, type: 3}
-    volume: 1
   - key: Gate
     clip: {fileID: 8300000, guid: b6f0ae587c2b3ba4fbc87ac8bc7753a3, type: 3}
     volume: 1
+  - key: Water
+    clip: {fileID: 0}
+    volume: 0.7
+  - key: 1Win
+    clip: {fileID: 8300000, guid: 8da3dc3b3bb5e854eab52918b7ca92bc, type: 3}
+    volume: 0.342
+  - key: 2Win
+    clip: {fileID: 8300000, guid: eb4e097af78b399478d11edfd9817c26, type: 3}
+    volume: 0.342
+  - key: 3Win
+    clip: {fileID: 8300000, guid: a9c69ca9eb0208349b31fdf2805a0759, type: 3}
+    volume: 0.342
+  - key: 4Win
+    clip: {fileID: 8300000, guid: 240fed67c42dcd4449d209914cb0bbb0, type: 3}
+    volume: 0.342
+  - key: 1Lose
+    clip: {fileID: 8300000, guid: 967f010651127564695a6dd6d46c6c04, type: 3}
+    volume: 0.342
+  - key: 2Lose
+    clip: {fileID: 8300000, guid: 7b553ff5690a69e4ab16e2bd959f9b7a, type: 3}
+    volume: 0.342
+  - key: 3Lose
+    clip: {fileID: 8300000, guid: 4d6b74f9eef5d4e44afdb7ae92a4d734, type: 3}
+    volume: 0.342
+  - key: 4Lose
+    clip: {fileID: 8300000, guid: 987ed69ca17cabb41ace6e4e850d8689, type: 3}
+    volume: 0.342
   - key: Jump
     clip: {fileID: 8300000, guid: 798b7b2279dda2a4a9cbfeb73dc433f0, type: 3}
     volume: 1
-  - key: Checkpoint
+  - key: Chckpoint
     clip: {fileID: 8300000, guid: 53e009b29cb726b4b8b78ef1815ad96a, type: 3}
     volume: 1
   isMuted: 0
+  levelKey: 1
 --- !u!4 &1971638725
 Transform:
   m_ObjectHideFlags: 0

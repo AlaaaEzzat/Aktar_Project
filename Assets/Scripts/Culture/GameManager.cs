@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     protected int CurrentLevelPart = 0;
     protected SelectableItem currentCorrectItem;
     protected SelectableItem currentSelectedItem;
+	public HealthSystem healthSystem;
 
 
     protected void Awake()
@@ -116,13 +117,14 @@ public class GameManager : MonoBehaviour
     public virtual IEnumerator LoseSequence()
 	{
 		DisableObjects();
-		SoundManager.Instance?.PlaySound(loseSoundKey);
+		SoundManager.Instance?.PlaySoundWithKey("Lose");
 		if (losePanel) losePanel.SetActive(true);
 		yield break;
 	}
 
 	public virtual IEnumerator WinSequence()
 	{
+		healthSystem.canTakeDmg = false;
         gameFinished = true;
 		if(CurrentLevelPart < parts.Count - 1)
 		{
@@ -140,26 +142,15 @@ public class GameManager : MonoBehaviour
             gameFinished = false;
             yield break;
         }
-        yield return new WaitForSeconds(2);
-
         LevelManager.Instance?.IncreaseLevelOpen(currentLevelIndex);
 		DisableObjects();
 
 		HideStars();
 
-		yield return new WaitForSeconds(0f);
-		SoundManager.Instance?.PlaySound(winSoundKey);
+		SoundManager.Instance?.PlaySoundWithKey("Win");
 		if (winPanel) winPanel.SetActive(true);
 
-        int finalCorrectAnswers = correctChoices - wrongChoices;
-
-        int starsToShow = finalCorrectAnswers >= totalRightItems[CurrentLevelPart]
-            ? 3
-            : finalCorrectAnswers >= totalRightItems[CurrentLevelPart] / 2
-                ? 2
-                : 1;
-
-        for (int i = 0; i < starsToShow; i++)
+        for (int i = 0; i < healthSystem.currentLives; i++)
 		{
 			if (winStars[i] != null)
 			{

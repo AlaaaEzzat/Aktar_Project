@@ -19,7 +19,7 @@ public class HealthSystem : MonoBehaviour
 
     private bool isDead = false;
     private Animator animator;
-    private bool canTakeDmg = true;
+    public bool canTakeDmg = true;
 
     void Start()
     {
@@ -67,6 +67,7 @@ public class HealthSystem : MonoBehaviour
     {
         isDead = true;
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(GameManager.Instance.LoseSequence());
         UiManager.Instance.LoseEndGame();
     }
 

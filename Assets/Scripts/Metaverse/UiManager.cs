@@ -48,19 +48,13 @@ public class UiManager : MonoBehaviour
 
     public void WinEndGame()
     {
-        WinPanal.SetActive(true);
         WinCoinText.text = CurrencyWallet.Instance.Coins.ToString();
         WinGemText.text = CurrencyWallet.Instance.Gems.ToString();
         WinHeartLeftText.text = healthSystem != null ? healthSystem.currentLives.ToString() : "0";
-        for(int i = 0; i < healthSystem.currentLives; i++)
-        {
-            WinStarts[i].SetActive(true);
-        }
     }
 
     public void LoseEndGame()
     {
-        LosePanal.SetActive(true);
         LoseCoinText.text = CurrencyWallet.Instance.Coins.ToString();
         LoseGemText.text = CurrencyWallet.Instance.Gems.ToString();
     }

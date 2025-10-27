@@ -15413,6 +15413,96 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3656197081862530428, guid: 374dca4817747bd499c671ee7c516433, type: 3}
   m_PrefabInstance: {fileID: 1686790648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1974144573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1974144575}
+  - component: {fileID: 1974144574}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1974144574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974144573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180615eaf4bfed049b630e1e9eeb0988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevelIndex: 1
+  LevelPart: 1
+  parts: []
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  winPanel: {fileID: 873353919}
+  losePanel: {fileID: 2074268133}
+  itemsPanal: {fileID: 0}
+  objectsToDisable:
+  - {fileID: 0}
+  winStars:
+  - {fileID: 1194467651}
+  - {fileID: 1579996072}
+  - {fileID: 1098255581}
+  starPopPunch: 0.3
+  starPopDuration: 0.35
+  starPopVibrato: 2
+  starPopElasticity: 1
+  backgroundSoundKey: background
+  winSoundKey: win
+  loseSoundKey: lose
+  allItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  totalRightItems: 0500000002000000
+  spendingPoints: 0
+  savingPoints: 0
+  keepingPoints: 0
+  spendingPointsText: {fileID: 0}
+  savingPointsText: {fileID: 0}
+  keepingPointsText: {fileID: 0}
+  background: {fileID: 0}
+  part2Background: {fileID: 21300000, guid: 5dc82b02e6de8714d9db71cfeb9cbd66, type: 3}
+  healthSystem: {fileID: 51705458}
+--- !u!4 &1974144575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974144573}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 628.78613, y: 430.81528, z: 0.014857164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1974488180 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5284314044499548041, guid: 9785a94550470f145af27757a5bbc495, type: 3}
@@ -19161,3 +19251,4 @@ SceneRoots:
   - {fileID: 65749145}
   - {fileID: 1008428017}
   - {fileID: 1137159170}
+  - {fileID: 1974144575}
