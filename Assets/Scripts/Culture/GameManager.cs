@@ -86,10 +86,7 @@ public class GameManager : MonoBehaviour
 	protected void Start()
 	{
 		SoundManager.Instance?.LoopSound(backgroundSoundKey, true);
-		ResetHearts();
-		HidePanels();
 		HideStars();
-		UpdateScoreTexts();
     }
 
 	public void LoseHeart()
@@ -119,7 +116,6 @@ public class GameManager : MonoBehaviour
 
     public virtual IEnumerator LoseSequence()
 	{
-		DisableObjects();
 		SoundManager.Instance?.PlayLevelKey("Lose");
 		if (losePanel) losePanel.SetActive(true);
 		yield break;
@@ -146,7 +142,6 @@ public class GameManager : MonoBehaviour
         }
 
         LevelManager.Instance?.IncreaseLevelOpen(currentLevelIndex);
-		DisableObjects();
 
 		HideStars();
 
@@ -180,141 +175,9 @@ public class GameManager : MonoBehaviour
 		yield break;
 	}
 
-
-	protected void DisableObjects()
-	{
-		foreach (var go in objectsToDisable)
-		{
-			if (go) go.SetActive(false);
-		}
-	}
-
-	protected void ResetHearts()
-	{
-		lives = hearts.Count;
-		Debug.Log("Lives set to: " + lives);
-		foreach (var img in hearts)
-		{
-			img.DOFade(1f, 0.2f);
-		}
-	}
-
-    protected void HidePanels()
-	{
-		if (winPanel) winPanel.SetActive(false);
-		if (losePanel) losePanel.SetActive(false);
-	}
-
     protected void HideStars()
 	{
 		foreach (var s in winStars)
 			if (s) s.SetActive(false);
 	}
-
-	public void RestartGame()
-	{
-		ResetHearts();
-		HidePanels();
-		HideStars();
-		foreach (var go in objectsToDisable)
-			if (go) go.SetActive(true);
-	}
-
-    public virtual void OnItemSelected(SelectableItem item)
-    {
-		if(gameFinished) return;
-        if (item.isCorrect && (item == currentCorrectItem || currentCorrectItem == null))
-        {
-			if(currentSelectedItem != null && currentSelectedItem.GetComponent<Animator>() != null)
-			{
-                currentSelectedItem.SkipEffect();
-            }
-            correctChoices++;
-            item.PlayCorrectAnimation();
-			ApplyImageEffect(item);
-            if (item.GetComponent<CanvasGroup>() != null)
-				item.GetComponent<CanvasGroup>().ignoreParentGroups = true;
-			currentCorrectItem = null;
-            currentSelectedItem = item;
-            if (itemsPanal != null && CurrentLevelPart < 1)
-				HideItemsPanal();
-
-            savingPoints += item.pointsType == Points.Saving ? 10 : 0;
-
-            if (correctChoices >= totalRightItems[CurrentLevelPart])
-                StartCoroutine(WinSequence());
-
-        }
-        else
-        {
-			if (hearts[wrongChoices] != null)
-				hearts[wrongChoices].enabled = false;
-
-            item.DisableInteraction();
-            wrongChoices++;
-			item.PlayWrongShake();
-            if (item.pointsType == Points.Spending)
-                spendingPoints += 10;
-            else if (item.pointsType == Points.Keeping)
-                keepingPoints += 10;
-
-            if (wrongChoices >= hearts.Count)
-                Lose();
-        }
-        item.GetComponent<Image>().raycastTarget = false;
-        UpdateScoreTexts();
-    }
-
-    protected void Lose()
-    {
-        losePanel.SetActive(true);
-    }
-
-	public void UpdateScoreTexts()
-    {
-		if(spendingPointsText == null || savingPointsText == null || keepingPointsText == null)
-			return;
-        spendingPointsText.text = spendingPoints.ToString();
-        savingPointsText.text = savingPoints.ToString();
-        keepingPointsText.text = keepingPoints.ToString();
-    }
-
-	public void ShowItemsPanal()
-	{
-        itemsPanal.GetComponent<CanvasGroup>().DOFade(1, 1f).SetEase(Ease.OutQuad);
-        itemsPanal.GetComponent<CanvasGroup>().blocksRaycasts = true;
-        foreach (var item in allItems)
-		{
-			item.GetComponent<Image>().raycastTarget = true;
-        }
-    }
-
-    public void HideItemsPanal()
-    {
-		itemsPanal.GetComponent<CanvasGroup>().DOFade(0, 1f).SetEase(Ease.OutQuad);
-        itemsPanal.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        foreach (var item in allItems)
-        {
-            item.GetComponent<Image>().raycastTarget = false;
-			item.GetComponent<Button>().interactable = true;
-        }
-    }
-
-	public void SetCurrentCorrectItem(SelectableItem item)
-	{
-        currentCorrectItem = item;
-    }
-
-	public void ApplyImageEffect(SelectableItem itm)
-	{
-		if(itm.pointsType == Points.Spending && spendingPointsEffectImage != null)
-            spendingPointsEffectImage.DOFade(1f, 1f).SetEase(Ease.InOutQuad)
-                .OnComplete(() => spendingPointsEffectImage.DOFade(0f, 1f).SetEase(Ease.InOutQuad));
-        else if(itm.pointsType == Points.Saving && savingPointsEffectImage != null)
-            savingPointsEffectImage.DOFade(1f, 1f).SetEase(Ease.InOutQuad)
-                .OnComplete(() => savingPointsEffectImage.DOFade(0f, 1f).SetEase(Ease.InOutQuad));
-        else if(itm.pointsType == Points.Keeping && keepingPointsEffectImage != null)
-            keepingPointsEffectImage.DOFade(1f, 1f).SetEase(Ease.InOutQuad)
-				.OnComplete(() => keepingPointsEffectImage.DOFade(0f, 1f).SetEase(Ease.InOutQuad));
-    }
 }
