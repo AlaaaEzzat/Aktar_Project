@@ -32,7 +32,6 @@ public class SelectableItem : MonoBehaviour , IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        FindAnyObjectByType<GameManager>().OnItemSelected(this);
     }
 
     public void PlayCorrectAnimation()

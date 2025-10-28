@@ -861,6 +861,7 @@ MonoBehaviour:
   emptyHeart: {fileID: 0}
   getHitEffect: {fileID: 1146182896}
   respawnPoint: {fileID: 738550447}
+  canTakeDmg: 1
 --- !u!95 &51705459
 Animator:
   serializedVersion: 7
@@ -1000,6 +1001,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f3dd0fc1aae504ea1a6d842f41c1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemys:
+  - {fileID: 1587445591}
+  - {fileID: 1347703949}
+  - {fileID: 544035004}
+  - {fileID: 82287004}
+  - {fileID: 2004017632}
+  - {fileID: 1268422789}
+  - {fileID: 795630724}
 --- !u!4 &65749145
 Transform:
   m_ObjectHideFlags: 0
@@ -1037,7 +1046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &82287005
 Transform:
   m_ObjectHideFlags: 0
@@ -4745,7 +4754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &544035005
 Transform:
   m_ObjectHideFlags: 0
@@ -6156,7 +6165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &795630725
 Transform:
   m_ObjectHideFlags: 0
@@ -9915,7 +9924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1268422790
 Transform:
   m_ObjectHideFlags: 0
@@ -10491,7 +10500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1347703950
 Transform:
   m_ObjectHideFlags: 0
@@ -12263,7 +12272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1587445592
 Transform:
   m_ObjectHideFlags: 0
@@ -17693,7 +17702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2004017633
 Transform:
   m_ObjectHideFlags: 0

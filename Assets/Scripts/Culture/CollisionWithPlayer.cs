@@ -116,7 +116,6 @@ public class CollisionWithPlayer : MonoBehaviour
 		else
 		{
 			SoundManager.Instance?.PlaySound("reset");
-			GameManager.Instance.LoseHeart();
 		}
 	}
 
